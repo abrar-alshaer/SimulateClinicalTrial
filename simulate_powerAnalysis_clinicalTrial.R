@@ -16,8 +16,8 @@ numSimulations <- 1000
 fractionTruePositives <- 0.25 #assuming 25% of the SNPs will be significant 
 effectSize <- 0.6 #modeling moderate effect size
 #limitation of this simulations is that it only models based on an assumed moderate effect size, whereas we will 
-#be modeling many different metabolites with varying effect sizes. However we can compensate with that by only specifying a 
-#significant difference of 25% of our metabolites in the simulation and 75% as null, therefore increasing our power and needed sample size.
+#be modeling many different SNPs with varying effect sizes. However we can compensate with that by only specifying a 
+#significant difference of 25% of our SNPs in the simulation and 75% as null, therefore increasing our power and needed sample size.
 
 pValues <- vector()
 truePositives <- vector()
