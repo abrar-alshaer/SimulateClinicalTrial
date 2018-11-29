@@ -6,7 +6,7 @@ library(easypower)
 
 #estimating mean & standard deviation from the median & IQR. 
 #This method was adapted from the paper titled by: Wan, Xiang, Wenqian Wang, Jiming Liu, and Tiejun Tong. 2014. 
-#"Estimating the Sample Mean and Standard Deviation from the Sample Size, Median, Range And/or Interquartile Range." 
+#“Estimating the Sample Mean and Standard Deviation from the Sample Size, Median, Range And/or Interquartile Range.” 
 #BMC Medical Research Methodology
 #https://stats.stackexchange.com/questions/256456/how-to-calculate-mean-and-sd-from-quartiles 
 
@@ -44,7 +44,7 @@ ss.2way(a=3,b=3,alpha=0.05,beta=0.2,f.A = 0.25, f.B = 0.25, B=100)
 #3-way ANOVA  
 #all sample sizes are always rounded UP!
 main.eff1 <- list(name = "Sex", levels = 2, eta.sq = "med")
-main.eff2 <- list(name = "Time", levels = 3, eta.sq = "med")
+main.eff2 <- list(name = "SNPs", levels = 3, eta.sq = "med")
 main.eff3 <- list(name = "DHA", levels = 2, eta.sq = "med")
 main.eff4 <- list(name = "BMI", levels = 3, eta.sq = "med")
 n.multiway(iv1 = main.eff1, iv2 = main.eff2, iv3 = main.eff3, interaction.eta2 = "med", result = "all") #med is = 0.06 which is assuming a moderate effect size (med) for the interaction terms 
@@ -54,3 +54,15 @@ n.multiway(iv1 = main.eff1, iv2 = main.eff2, iv3 = main.eff3, iv4 = main.eff4, i
 
 #Link that contains the 3 way ANOVA code: https://cran.r-project.org/web/packages/easypower/vignettes/User_Input.html 
 
+#calculating effect sizes for pearson & spearman correlation coefficiants
+pwr.r.test(n = NULL, r = 0.7, sig.level = 0.05, power = 0.8) #n= NULL because we want an estimated sample size
+
+#CAREFUL! The r value is not what you want to have in your study, but what you assume the correlation in your study will have.
+#also r is the square root of r2, so you can back-calculate what r value you need, because r and r2 do NOT mean the same thing
+#Coefficient of correlation is “R” value, r2 = Coefficient of Determination
+#r2 shows percentage variation in y which is explained by all the x variables together
+#Coefficient of Correlation: is the degree of relationship between two variables say x and y. It can go between -1 and 1.  
+#1 indicates that the two variables are moving in unison. -1 means they are opposites.
+
+#Cohen suggests that r values of 0.1, 0.3, and 0.5 represent small, medium, and large effect sizes respectively.
+#https://www.statmethods.net/stats/power.html 
